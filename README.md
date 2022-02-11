@@ -2,6 +2,8 @@
 
 ## Des idées pour tes cadeaux
 
+https://github.com/Striilir/IDKDO
+
 #### IDKDO a été développé dans le cadre du projet en Django. Il s'inscrit dans le sujet :
 - Gift-ideas : un site où l’on va faire des idées de cadeaux / suggérer des idées de cadeaux + les noter (les meilleurs ressortent en premier)
 
