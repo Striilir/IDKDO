@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>IDKDO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar is-info">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item"><strong>IDKDO - Des idées pour tes cadeaux</strong></a>
+            {% if request.user.is_authenticated %}
+                <a href="/new/" class="navbar-item">Proposer une idée</a>
+                <a href="{% url 'accounts:logout' %}" class="navbar-item">Déconnexion</a>
+            {% else %}
+                <a href="{% url 'accounts:login' %}" class="navbar-item">Connexion</a>
+                <a href="{% url 'accounts:register' %}" class="navbar-item">S'inscrire</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </section>
+</body>
+</html>

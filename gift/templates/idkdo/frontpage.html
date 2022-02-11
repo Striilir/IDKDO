@@ -1,0 +1,17 @@
+{%  extends 'idkdo/base.html' %}
+
+{% block content %}
+    {% for idea in ideas %}
+        <div class="notification is-light box">
+            <h2 class="block subtitle">{{ idea.title }}</h2>
+
+            <small class="block">Proposé par {{ user.get_username }} le {{ idea.date_added|date:"d/m/Y" }}</small>
+
+            <p class="block"> {{ idea.intro }}</p>
+            {% load index %}
+            <small class="block">Noté {{ tabrate|index:forloop.counter0 }}</small>
+
+            <a class="block" href="{% url 'idea_detail' idea.slug %}">En savoir plus</a>
+        </div>
+    {% endfor %}
+{% endblock %}

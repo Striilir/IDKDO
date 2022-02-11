@@ -1,0 +1,17 @@
+{%  extends 'idkdo/base.html' %}
+
+{% block content %}
+<h2 class="subtitle">Ajouter une IDKDO</h2>
+
+    <form class="box" method="post" action=".">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-success">Envoyer</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

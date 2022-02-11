@@ -1,0 +1,48 @@
+{% extends 'idkdo/base.html' %}
+{%  block content %}
+    <h1 class="title">{{ idea.title }}</h1>
+
+    <small class="block">Proposé par {{ user.get_username }} le {{ idea.date_added|date:"d/m/Y" }}</small>
+
+    <p><strong> {{ idea.intro }}</strong></p>
+
+    <p>{{ idea.body }}</p>
+
+    <hr>
+
+    <h2 class="subtitle">Commentaires</h2>
+
+    {% for comment in idea.comments.all %}
+        <article class="media box">
+            <div class="media-content">
+                <p>
+                    <div class="block comment_title">
+                        <small class="block">Par {{ user.get_username }} le {{ comment.date_added|date:"d/m/Y" }} </small>
+                        <strong>{{ comment.rate }} </strong><span class="material-icons">star</span>
+                    </div>
+                    <small>{{ comment.text }}</small>
+                </p>
+            </div>
+        </article>
+    {% empty %}
+        <div class="notification">
+            <p>Pas de commentaire</p>
+        </div>
+    {% endfor %}
+
+    <hr>
+
+    <h2 class="subtitle">Ajouter un commentaire</h2>
+
+    <form method="post" action=".">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-success">Envoyer</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
